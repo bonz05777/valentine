@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Surprise</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #ffe6e6;
+            font-family: 'Arial', sans-serif;
+        }
+        .heart {
+            color: red;
+            animation: heartbeat 1s infinite;
+        }
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        .hidden {
+            display: none;
+        }
+        .valentine-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container valentine-card">
+        <h1 class="text-center animate__animated animate__bounceIn">Hey Valentine! <span class="heart">❤</span></h1>
+        <div class="text-center">
+            <button class="btn btn-danger m-3 animate__animated animate__pulse" onclick="showMessage()">Click if you're cute</button>
+            <button class="btn btn-pink m-3" onclick="tryToSayNo()" id="noBtn">Say No</button>
+        </div>
+        <p id="message" class="text-center mt-4 hidden animate__animated"></p>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function showMessage() {
+            const messages = [
+                "You must have clicked this by accident because you're SUPER cute! 😍",
+                                "Roses are red, violets are blue, I can't believe it, you clicked too! 🌹",
+                                "If you were a vegetable, you'd be a cute-cumber! 🥒",
+                                "Do you have a map? Because I keep getting lost in your eyes. 🗺️",
+                                "Are you a magician? Because whenever I look at you, everyone else disappears! 🎩"
+                            ];
+                            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+                            const messageElement = document.getElementById('message');
+                            messageElement.innerText = randomMessage;
+                            messageElement.classList.remove('hidden');
+                            messageElement.classList.add('animate__fadeIn');
+                        }
+
+                        function tryToSayNo() {
+                            const noBtn = document.getElementById('noBtn');
+                            noBtn.innerText = "You can't say no to this! 😜";
+                            noBtn.classList.add('animate__shakeX');
+                        }
+                    </script>
+                </body>
+                </html>
+                <script>
+                    // Additional functionality to make it more humorous
+                    document.addEventListener('DOMContentLoaded', (event) => {
+                        const noBtn = document.getElementById('noBtn');
+                        noBtn.addEventListener('mouseover', () => {
+                            noBtn.style.position = 'absolute';
+                            noBtn.style.top = `${Math.random() * window.innerHeight}px`;
+                            noBtn.style.left = `${Math.random() * window.innerWidth}px`;
+                        });
+                    });
+                </script>
+                <script>
+                    // Function to simulate opening an envelope
+                    function openEnvelope() {
+                        const envelope = document.createElement('div');
+                        envelope.classList.add('envelope');
+                        envelope.innerHTML = `
+                            <div class="envelope-flap"></div>
+                            <div class="envelope-body">
+                                <p class="letter">You've got a secret admirer! 💌</p>
+                            </div>
+                        `;
+                        document.body.appendChild(envelope);
+
+                        setTimeout(() => {
+                            envelope.classList.add('open');
+                        }, 1000);
+                    }
+
+                    // Function to simulate popping a balloon
+                    function popBalloon() {
+                        const balloon = document.createElement('div');
+                        balloon.classList.add('balloon');
+                        balloon.innerHTML = `
+                            <div class="balloon-string"></div>
+                            <div class="balloon-body">🎈</div>
+                        `;
+                        document.body.appendChild(balloon);
+
+                        setTimeout(() => {
+                            balloon.classList.add('pop');
+                        }, 2000);
+                    }
+
+                    // Add event listeners for new tricks
+                    document.addEventListener('DOMContentLoaded', (event) => {
+                        const envelopeBtn = document.createElement('button');
+                        envelopeBtn.classList.add('btn', 'btn-info', 'm-3');
+                        envelopeBtn.innerText = "Open Envelope";
+                        envelopeBtn.onclick = openEnvelope;
+                        document.querySelector('.valentine-card .text-center').appendChild(envelopeBtn);
+
+                        const balloonBtn = document.createElement('button');
+                        balloonBtn.classList.add('btn', 'btn-warning', 'm-3');
+                        balloonBtn.innerText = "Pop Balloon";
+                        balloonBtn.onclick = popBalloon;
+                        document.querySelector('.valentine-card .text-center').appendChild(balloonBtn);
+                    });
+                </script>
+
+                <style>
+                    .envelope {
+                        position: fixed;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        width: 200px;
+                        height: 150px;
+                        background: #fff;
+                        border: 2px solid #000;
+                        border-radius: 5px;
+                        overflow: hidden;
+                        transition: transform 1s;
+                    }
+                    .envelope-flap {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 50%;
+                        background: #f00;
+                        transform-origin: top;
+                        transition: transform 1s;
+                    }
+                    .envelope.open .envelope-flap {
+                        transform: rotateX(180deg);
+                    }
+                    .envelope-body {
+                        position: absolute;
+                        top: 50%;
+                        left: 0;
+                        width: 100%;
+                        height: 50%;
+                        background: #fff;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+                    .letter {
+                        font-size: 1.2em;
+                        color: #000;
+                    }
+
+                    .balloon {
+                        position: fixed;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        width: 100px;
+                        height: 150px;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: flex-end;
+                        transition: transform 0.5s;
+                    }
+                    .balloon-body {
+                        font-size: 3em;
+                    }
+                    .balloon-string {
+                        width: 2px;
+                        height: 100px;
+                        background: #000;
+                    }
+                    .balloon.pop {
+                        transform: scale(0);
+                    }
+                </style>
+                <script>
+                    // Function to simulate falling flowers
+                    function fallFlowers() {
+                        const flowerContainer = document.createElement('div');
+                        flowerContainer.classList.add('flower-container');
+                        document.body.appendChild(flowerContainer);
+
+                        for (let i = 0; i < 20; i++) {
+                            const flower = document.createElement('div');
+                            flower.classList.add('flower');
+                            flower.innerText = '🌸';
+                            flower.style.left = `${Math.random() * 100}vw`;
+                            flower.style.animationDelay = `${Math.random() * 2}s`;
+                            flowerContainer.appendChild(flower);
+                        }
+                    }
+
+                    // Add event listener for falling flowers
+                    document.addEventListener('DOMContentLoaded', (event) => {
+                        const flowerBtn = document.createElement('button');
+                        flowerBtn.classList.add('btn', 'btn-success', 'm-3');
+                        flowerBtn.innerText = "Fall Flowers";
+                        flowerBtn.onclick = fallFlowers;
+                        document.querySelector('.valentine-card .text-center').appendChild(flowerBtn);
+                    });
+                </script>
+
+                <style>
+                    .flower-container {
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        pointer-events: none;
+                        overflow: hidden;
+                    }
+                    .flower {
+                        position: absolute;
+                        top: -50px;
+                        font-size: 2em;
+                        animation: fall 4s linear infinite;
+                    }
+                    @keyframes fall {
+                        to {
+                            transform: translateY(100vh);
+                        }
+                    }
+                </style>
+
+
+
+To commit, pull, and push your changes to your GitHub repository, follow these steps:
+
+1. **Navigate to your project directory**:
+    ```sh
+    cd "/c:/Users/bonim/Documents/VS CODE CODES/Sample"
+    ```
+
+2. **Initialize a Git repository (if not already initialized)**:
+    ```sh
+    git init
+    ```
+
+3. **Add your remote repository**:
+    ```sh
+    git remote add origin https://github.com/bonz05777/valentine.git
+    ```
+
+4. **Add all changes to the staging area**:
+    ```sh
+    git add .
+    ```
+
+5. **Commit your changes**:
+    ```sh
+    git commit -m "Added Valentine's Day surprise webpage with animations and tricks"
+    ```
+
+6. **Pull the latest changes from the remote repository**:
+    ```sh
+    git pull origin main --rebase
+    ```
+
+7. **Push your changes to the remote repository**:
+    ```sh
+    git push origin main
+    ```
+
+Make sure you have the necessary permissions to push to the repository. If prompted, enter your GitHub username and password or use a personal access token.
